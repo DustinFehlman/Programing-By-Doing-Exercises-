@@ -8,10 +8,11 @@ public class BabyBlackjack
 		
 		Random cards = new Random();
 		
+		
 		out.println("Baby Blackjack!");
 		
-		int humanCard1 = cards.nextInt(10), humanCard2 = cards.nextInt(10), compCard1 = cards.nextInt(10),
-		compCard2 = cards.nextInt(10);
+		int humanCard1 = 1 + cards.nextInt(10), humanCard2 = 1 + cards.nextInt(10), compCard1 = 1 + cards.nextInt(10),
+		compCard2 = 1 + cards.nextInt(10);
 		
 		int humanTotal = humanCard1 + humanCard2, compTotal = compCard1 + compCard2;
 		
