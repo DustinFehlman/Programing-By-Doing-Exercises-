@@ -28,7 +28,7 @@ public class Blackjack
 			int dealerTotal = dealerCard1 + dealerCard2;
 			int hitCard = 2 + cards.nextInt(9);
 			int betAmount = 0;
-			String suit = "";
+			
 			
 			out.println("You have $" +bankRoll+ " to play with.");
 			out.print("How much would you like to bet this round? $");
@@ -70,7 +70,12 @@ public class Blackjack
 			} while(playerTotal < 21 && playerChoice.equalsIgnoreCase("hit") );
 			
 			if(playerTotal > 21)
-				out.print("Player bust. Dealer wins");
+			{
+				out.println("Player bust. Dealer wins");
+				out.println("You lost $" +betAmount+ ".");
+				bankRoll = bankRoll - betAmount;
+				
+			}
 			else
 			{
 				out.println("\nOkay, dealer's turn.");
