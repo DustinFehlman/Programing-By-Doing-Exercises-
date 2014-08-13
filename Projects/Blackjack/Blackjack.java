@@ -25,7 +25,7 @@ public class Blackjack
 			int playerCard1 = 2 + cards.nextInt(9), playerCard2 = 2 + cards.nextInt(9);
 			int dealerCard1 = 2 + cards.nextInt(9), dealerCard2 = 2 + cards.nextInt(9);
 			int playerTotal = playerCard1 + playerCard2;
-			int dealerTotal = dealerCard1 + dealerCard2;
+			int dealerTotal = 14; //dealerCard1 + dealerCard2;
 			int hitCard = 2 + cards.nextInt(9);
 			int betAmount = 0;
 			
@@ -73,7 +73,7 @@ public class Blackjack
 			{
 				out.println("Player bust. Dealer wins");
 				out.println("You lost $" +betAmount+ ".");
-				bankRoll = bankRoll - betAmount;
+				bankRoll -= betAmount;
 				
 			}
 			else
@@ -85,7 +85,7 @@ public class Blackjack
 				//Dealer loop on hit 16 and lower
 				do
 				{
-					if( dealerTotal <= 16 && dealerTotal < playerTotal)
+					if( dealerTotal <= 16 )
 					{
 						hitCard = 2 + cards.nextInt(9);
 						dealerTotal = dealerTotal + hitCard;
@@ -96,13 +96,13 @@ public class Blackjack
 					if (dealerTotal > 21)
 					{
 						out.println("Dealer bust. Player wins");
-						bankRoll = bankRoll + (betAmount * 2);
+						bankRoll += (betAmount * 2);
 					}
-					else if (dealerTotal > 16 || dealerTotal > playerTotal)
+					else if (dealerTotal > 16)
 					{
 						out.println("Dealer stays.");	
 					}			
-				}while ( dealerTotal < 16 && dealerTotal < playerTotal );
+				}while ( dealerTotal < 17 );
 				
 				if ( dealerTotal > playerTotal && dealerTotal <= 21 )
 				{
@@ -110,7 +110,7 @@ public class Blackjack
 					out.println("Player total is " + playerTotal + ".");
 					out.println("Dealer	wins.");
 					out.println("You lost " +betAmount+ ".");
-					bankRoll = bankRoll - betAmount;
+					bankRoll -= betAmount;
 				}
 				else if ( dealerTotal < playerTotal && playerTotal <= 21 )
 				{
@@ -118,14 +118,14 @@ public class Blackjack
 					out.println("Player total is " + playerTotal + ".");
 					out.println("Player wins!");
 					out.println("You won $" + betAmount * 2 + "!");
-					bankRoll = bankRoll + (betAmount * 2);
+					bankRoll += (betAmount * 2);
 					
 				}
 				else if ( dealerTotal == playerTotal && dealerTotal <= 21 && playerTotal <= 21 )
 				{
 					out.println("Dealer wins the tie.");
 					out.println("You lost $" +betAmount+ ".");
-					bankRoll = bankRoll - betAmount;
+					bankRoll -= betAmount;
 				}
 			}
 			out.println("\nYour bank roll is at $"+ bankRoll + ".");
